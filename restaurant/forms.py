@@ -6,12 +6,12 @@ class QuestionForm(forms.ModelForm):
         model = Restaurant
         fields = ['title', 'local_category','food_category_1st','food_category_2nd', 'dining_food_cate_1',
                   'dining_food_cate_2', 'isParking', 'isValet', 'isPet',
-                  'isPackaging', 'isReservation', 'address', 'phone', 'menu1', 'price1',
+                  'isPackaging', 'isReservation', 'address', 'telephone', 'menu1', 'price1',
                   'menu2', 'price2', 'menu_url','mon_business', 'mon_breaktime',
                   'tues_business', 'tues_breaktime', 'wed_business', 'wed_breaktime',
                   'thurs_business', 'thurs_breaktime', 'fri_business', 'fri_breaktime',
                   'sat_business', 'sat_breaktime', 'sun_business', 'sun_breaktime',
-                  'imgfile_1', 'imgfile_2', 'imgfile_3', 'closest_parking_name', 'closest_parking_address',
+                  'img_file1', 'img_file2', 'closest_parking_name', 'closest_parking_address',
                   ]
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -21,7 +21,7 @@ class QuestionForm(forms.ModelForm):
             'dining_food_cate_1': forms.TextInput(attrs={'class': 'form-control'}),
             'dining_food_cate_2': forms.TextInput(attrs={'class': 'form-control'}),
             'address': forms.TextInput(attrs={'class': 'form-control'}),
-            'phone': forms.TextInput(attrs={'class': 'form-control'}),
+            'telephone': forms.TextInput(attrs={'class': 'form-control'}),
             'menu1': forms.TextInput(attrs={'class': 'form-control'}),
             'price1': forms.TextInput(attrs={'class': 'form-control'}),
             'menu2': forms.TextInput(attrs={'class': 'form-control'}),
@@ -41,9 +41,8 @@ class QuestionForm(forms.ModelForm):
             'sat_breaktime': forms.TextInput(attrs={'class': 'form-control'}),
             'sun_business': forms.TextInput(attrs={'class': 'form-control'}),
             'sun_breaktime': forms.TextInput(attrs={'class': 'form-control'}),
-            'imgfile_1': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'imgfile_2': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'imgfile_3': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'img_file1': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'img_file2': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'closet_parking_name': forms.TextInput(attrs={'class': 'form-control'}),
             'closet_parking_address': forms.TextInput(attrs={'class': 'form-control'}),
 

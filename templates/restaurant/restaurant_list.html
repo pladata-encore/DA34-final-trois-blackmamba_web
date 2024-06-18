@@ -53,7 +53,7 @@
                     <td>{{ forloop.counter }}</td>
                     <td>{{ restaurant.local_category }}</td>
                     <td>
-                        <a href="{% url 'restaurant:restaurant_detail' restaurant.id %}">
+                        <a href="{% url 'restaurant:restaurant_detail' restaurant.no %}">
                             {{ restaurant.title }}
                         </a>
                     </td>

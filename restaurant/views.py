@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from django.db.models import Q
-from .models import Restaurant
+from django.http import HttpResponse, JsonResponse
+from restaurant.models import Restaurant
 from .forms import QuestionForm
+import csv
 
 def restaurant_list(request):
     """
@@ -12,7 +14,7 @@ def restaurant_list(request):
     page = request.GET.get('page', '1') #페이지
     kw = request.GET.get('kw', '') #키워드 검색
     # 조회
-    restaurant_list = Restaurant.objects.order_by('id')
+    restaurant_list = Restaurant.objects.order_by('no')
     if kw:
         restaurant_list = restaurant_list.filter(
             Q(title__icontains=kw) |  # 상호명 검색
@@ -26,17 +28,15 @@ def restaurant_list(request):
     context = {'restaurant_list': page_obj, 'page': page, 'kw':kw} #템플릿에서 사용할 데이터를 context 딕셔너리에 저장
     return render(request, 'restaurant/restaurant_list.html', context)
 
-def restaurant_detail(request, restaurant_id):
-    restaurant = get_object_or_404(Restaurant, id=restaurant_id)
+def restaurant_detail(request, restaurant_no):
+    restaurant = get_object_or_404(Restaurant, no=restaurant_no)
 
     # 이미지 파일 경로를 템플릿으로 전달하기 위해 context에 추가합니다.
     img_urls = []
-    if restaurant.imgfile_1:
-        img_urls.append(restaurant.imgfile_1.url)
-    if restaurant.imgfile_2:
-        img_urls.append(restaurant.imgfile_2.url)
-    if restaurant.imgfile_3:
-        img_urls.append(restaurant.imgfile_3.url)
+    if restaurant.img_file1:
+        img_urls.append(restaurant.img_file1.url)
+    if restaurant.img_file2:
+        img_urls.append(restaurant.img_file2.url)
     context = {'restaurant': restaurant, 'img_urls': img_urls}
     return render(request, 'restaurant/restaurant_detail.html', context)
 
