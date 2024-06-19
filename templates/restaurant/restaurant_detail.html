@@ -129,7 +129,7 @@
             color: black;
         }
         .business-day, .main-menu, .phone-number, .introduction, .additional-info-title, .address,
-         .parking {
+         .parking, .no-images {
             font-family: "Jua", sans-serif;
             font-size: 40px;
             font-weight: 500;
@@ -181,6 +181,7 @@
         </div>
         <!-- 이미지 슬라이더 -->
         <div class="slideshow-container">
+        {% if img_urls %}
             {% for img_url in img_urls %}
             <div class="slides {% if forloop.first %}active{% endif %}">
                 <img src="{{ img_url }}" alt="Restaurant Image" class="slide-image">
@@ -189,6 +190,11 @@
             <!-- 이전, 다음 버튼 -->
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        {% else %}
+        <div class="no-images">
+            <p>매장 사진이 없습니다. 추후에 업로드하겠습니다.</p>
+        </div>
+        {% endif %}
         </div>
         <h2 class="business-day"><img src="{% static 'images/time.png' %}" alt="Icon"> 영업시간
         (<span id="toc-toggle" onclick="openCloseToc()">펼치기</span>)
