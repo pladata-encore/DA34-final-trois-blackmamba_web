@@ -34,9 +34,14 @@ def restaurant_detail(request, restaurant_no):
     # 이미지 파일 경로를 템플릿으로 전달하기 위해 context에 추가합니다.
     img_urls = []
     if restaurant.img_file1:
-        img_urls.append(restaurant.img_file1.url)
+        if restaurant.img_file1.url and restaurant.img_file1.storage.exists(restaurant.img_file1.name):
+            img_urls.append(restaurant.img_file1.url)
     if restaurant.img_file2:
-        img_urls.append(restaurant.img_file2.url)
+        if restaurant.img_file2.url and restaurant.img_file2.storage.exists(restaurant.img_file2.name):
+            img_urls.append(restaurant.img_file2.url)
+    # 이미지가 없는 경우 처리
+    if not img_urls:
+        img_urls = None  # None으로 설정하여 템플릿에서 처리할 수 있도록 합니다
     context = {'restaurant': restaurant, 'img_urls': img_urls}
     return render(request, 'restaurant/restaurant_detail.html', context)
 
