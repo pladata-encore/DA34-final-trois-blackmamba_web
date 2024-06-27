@@ -124,7 +124,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # 기존의 static 경로
-    'C:/projects/blackmamba/static',   # 엑셀을 통해 추가된 경로
+    'C:/projects/blackmamba/static',
+    '/home/ubuntu/projects/blackmamba/static'# 엑셀을 통해 추가된 경로
 ]
 
 # Default primary key field type
