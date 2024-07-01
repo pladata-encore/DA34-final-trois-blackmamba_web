@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-fo7uncb9wrnk@75o!7&_1lfjyp7vfld1$4-sq6-w$kkni7dkdf
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['43.202.97.115']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -92,7 +92,7 @@ if os.name == 'nt':  # Windows
 else:  # Linux or other
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static'),
-        '/home/ubuntu/projects/blackmamba/static'
+        '/home/ubuntu/projects/DA34-final-trois-blackmamba_web/static'
     ]
 
 # Media files
